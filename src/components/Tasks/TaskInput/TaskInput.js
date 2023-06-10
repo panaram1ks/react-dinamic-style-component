@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+/* import styled from "styled-components"; */
 
 import Button from "../../UI/Button/Button";
-import "./TaskInput.css";
+import styleMod from "./TaskInput.module.css";
 
-const FormControl = styled.div`
+/* const FormControl = style
+d.div`
   margin: 0.5rem 0;
 
   & label {
@@ -34,7 +35,7 @@ const FormControl = styled.div`
     border-color: red;
     background: #d087df;
   }
-`;
+`; */
 
 const TaskInput = (props) => {
   const [inputText, setinputText] = useState("");
@@ -59,14 +60,21 @@ const TaskInput = (props) => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      {/* <div className={`form-control ${!isInputValid ? "invalid" : ""}`}> */}
+      {/*
+       <div className={`form-control ${!isInputValid ? "invalid" : ""}`}> */}
 
       {/*  <FormControl className={!isInputValid && "invalid"}> */}
-      <FormControl invalidProps={!isInputValid}>
+      {/* <FormControl invalidProps={!isInputValid}>
         <label>Задачи</label>
         <input type="text" onChange={taskInputChangeHandler} />
-        {/* </div> */}
-      </FormControl>
+        
+        </div>
+      </FormControl> */}
+
+      <div className={`${styleMod["form-control"]} ${!isInputValid && styleMod.invalid}`}>
+        <label>Задачи</label>
+        <input type="text" onChange={taskInputChangeHandler} />
+      </div>
       <Button type="submit">Добавить Задачу</Button>
     </form>
   );
